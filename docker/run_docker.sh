@@ -1,1 +1,13 @@
-docker run --gpus all -d --rm --name ocr_cli_runner --shm-size=256m  -i ocr-v2-cli-py38:latest
+#! /bin/bash
+IMAGE="ocr-v2-cli-py38:latest"
+CONTAINER="ocr_cli_runner"
+
+sudo docker run \
+     -tid \
+     --gpus all \
+     --privileged \
+     -v /data:/data \
+     --shm-size=256m \
+     --name ${CONTAINER} \
+     ${IMAGE} \
+     /bin/bash
